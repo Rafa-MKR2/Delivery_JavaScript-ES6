@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+</head>
+	<meta charset="UTF-8">
+	<title>Estudo</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+ 	<link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/bootstrap-theme.css">
+    
+
+
+</head>
+<body>
+
+<div class="container">
+
+<div class="col-md-12 col-sm-12 col-xs-12">
+    <h1 class="text-center">Delivery</h1>
+	
+		<div id="mensagemView">
+
+		</div>
+    <form onsubmit="DeliveryControllers.adiciona(event);" class="form col-md-4 col-xs-12">
+        
+        <div class="form-group">
+            <label for="data">Data Do Pedido</label>
+            <input type="date" id="data" class="form-control" value="" required autofocus/>        
+        </div>    
+        
+        <div class="form-group">
+            <label for="nome">Nome Cliente</label>
+            <input type="text" id="nome" class="form-control" value=""  required/>
+        </div>
+
+       <div class="form-group">
+            <label for="quantidade">Quantidade </label>
+            <input type="number" min="1" step="1" id="quantidade" onchange="visor(this.value);" class="form-control" value="1" required/>
+            <small>Valor por quantidade 1 = $5.00</small>
+        </div>
+
+        <div class="form-group">
+            <label for="valor">Valor Total</label>
+            <input id="valor" type="text" class="form-control"  min="0.01" step="0.01" value="0.0"  readonly/>
+        </div>
+        
+        <button class="btn btn-primary" type="submit">Pedir</button>
+   <br>
+   <br>
+   <br>
+    </form>
+   
+  
+
+    
+	<div id="DeliveryView">
+
+	</div>
+	
+</div>		
+
+</div>
+     <script src="js/Delivery.js"></script>
+    <script src="js/Controllers.js"></script>
+    <script src="js/helper/DateHelper.js"></script>
+    <script src="js/models/ListaItens.js"></script>
+    <script src="js/View/View.js"></script>
+ 	<script src="js/View/DeliveryView.js"></script>
+ 	<script src="js/models/Mensagens.js"></script>
+ 	<script src="js/View/MensagemView.js"></script>
+    <script>
+    
+   
+     let DeliveryControllers = new controllers();
+
+     function visor(quantidade){
+
+     	let valor = (5.00 * quantidade);
+     	document.querySelector('#valor').value = '$'+valor+'.00'; 
+   
+     }
+    
+
+
+    </script>
+
+
+</body>
+</html>
